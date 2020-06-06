@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'capybara', '~> 3.32'
+  gem 'rspec-rails', '~> 4.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
