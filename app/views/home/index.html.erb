@@ -1,6 +1,11 @@
-<%= flash[:notice]%>
 <h1> HeadHunters </h1>
 
 <h1> Bem vindo ao sistema de gestão de empregos</h1>
 
-<%= link_to 'Acesso HeadHunter', new_headhunteruser_session_path %>
+<%= flash[:notice]%>
+
+<% if headhunteruser_signed_in? %>
+  <%= link_to 'Logout', destroy_headhunteruser_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Acesso HeadHunter', new_headhunteruser_session_path %>
+<% end %>
