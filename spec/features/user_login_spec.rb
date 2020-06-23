@@ -12,12 +12,12 @@ feature 'User log in' do
 
     expect(page).to have_content('Login efetuado com sucesso!')
     #expect(page).to have_link('Cadastrar Vagas')
-    #expect(page).to have_link('Ver Vagas Cadastradas')
+    expect(page).to have_link('Vagas Cadastradas')
     expect(page).to have_link('Logout')
     expect(page).not_to have_link('Acesso HeadHunter')
   end
 
-  scenario 'and log out' do
+  scenario 'and logout' do
     Headhunteruser.create!(email: 'headhunter@test.com.br', password: '12345678')
 
     visit root_path
@@ -31,8 +31,7 @@ feature 'User log in' do
     expect(page).not_to have_link('Logout')
     expect(page).to have_link('Acesso HeadHunter')
     #expect(page).not_to have_link('Cadastrar Vagas')
-    #expect(page).not_to have_link('Ver Vagas Cadastradas')
+    expect(page).not_to have_link('Vagas Cadastradas')
 
-    # TODO colocar ir da index na application para aparecer em todas as paginas
   end
 end

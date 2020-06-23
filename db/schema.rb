@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_010943) do
+ActiveRecord::Schema.define(version: 2020_06_23_205537) do
 
   create_table "headhunterusers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2020_06_22_010943) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_headhunterusers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_headhunterusers_on_reset_password_token", unique: true
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "skills"
+    t.decimal "salary"
+    t.datetime "application_deadline"
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "level"
   end
 
 end

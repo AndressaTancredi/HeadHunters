@@ -1,0 +1,9 @@
+<%= @job.title %>
+<%= @job.level %>
+<%= @job.description %>
+<%= @job.skills %>
+<%= number_to_currency @job.salary %>
+<%= I18n.l @job.application_deadline, format: :custom %>
+<%= @job.location %>
+
+<%= link_to 'Voltar', jobs_path %>

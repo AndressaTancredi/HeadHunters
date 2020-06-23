@@ -1,0 +1,21 @@
+ </head>
+
+  <body>
+    <nav>
+      <% if headhunteruser_signed_in? %>  
+        <%= link_to 'Vagas Cadastradas', jobs_path %>
+        <%= link_to 'Logout', destroy_headhunteruser_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Acesso HeadHunter', new_headhunteruser_session_path %>
+      <% end %>
+      <%= link_to 'Home', root_path %>
+    </nav>
+
+    <% if flash[:success] %>
+      <p><%= flash[:success] %></p>
+    <% end %>
+    <%= notice %>
+    <%= alert %>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+ <h1>Vagas Cadastradas</h1> 
+
+<% @jobs.each do |job| %>
+  <%= link_to job.title, job %>
+<% end %>
+
+<% if @jobs.empty? %>
+  <p> Nenhuma vaga cadastrada </p>
+<% end %>
+
+<%#= link_to 'Registrar nova vaga', bla_path%>
