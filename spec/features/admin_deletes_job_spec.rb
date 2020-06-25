@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'Admin deletes job' do
   scenario 'successfully' do
-
     Job.create!(title: 'SRE', description: 'Profissional com mais de 5 anos de experiência',skills: 'Linux e Docker', salary: 10000, application_deadline: '15/08/2021', location: 'São Paulo', level: 'Pleno')
     
     Headhunteruser.create!(email: 'headhunter@test.com.br', password: '12345678')

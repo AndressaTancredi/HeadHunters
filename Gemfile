@@ -34,6 +34,7 @@ group :development, :test do
   gem 'capybara', '~> 3.32'
   gem 'rspec-rails', '~> 4.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'bootstrap-datepicker-rails'
 end
 
 group :development do
