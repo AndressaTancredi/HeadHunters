@@ -1,9 +1,9 @@
  </head>
-
   <body>
     <nav>
       <% if headhunteruser_signed_in? %>  
         <%= link_to 'Vagas Cadastradas', jobs_path %>
+        <%= link_to 'Cadastrar Nova Vaga', new_job_path %>
         <%= link_to 'Logout', destroy_headhunteruser_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Acesso HeadHunter', new_headhunteruser_session_path %>

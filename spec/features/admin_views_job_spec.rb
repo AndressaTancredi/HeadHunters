@@ -2,7 +2,7 @@ require 'rails_helper'
 
 include LoginMethods
 
-feature 'Admin view a job' do
+feature 'Admin views job' do
   scenario 'must be signed in' do
     Headhunteruser.create!(email: 'headhunter@test.com.br', password: '12345678')
 
@@ -30,7 +30,7 @@ feature 'Admin view a job' do
     expect(page).to have_content('SRE')
   end
 
-  scenario 'and view details' do
+  scenario 'and views details' do
     Job.create!(title: 'SRE', description: 'Profissional com mais de 5 anos de experiência',skills: 'Linux e Docker', salary: 10000, application_deadline: '15/08/2020', location: 'São Paulo', level: 'Pleno')
 
     Headhunteruser.create!(email: 'headhunter@test.com.br', password: '12345678')
@@ -54,5 +54,4 @@ feature 'Admin view a job' do
     expect(page).to have_content('Pleno')
     expect(page).to have_link('Voltar')
   end
-
 end
