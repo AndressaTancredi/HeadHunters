@@ -21,7 +21,7 @@ feature 'Admin registers job' do
     fill_in 'Salário', with: 15000
     fill_in 'Data Final Para Aplicação', with: '10/08/2021'
     fill_in 'Localização', with: 'São Paulo'
-    click_on 'Cadastrar'
+    click_on 'Enviar'
 
     expect(page).to have_content('Desenvolvedor Java')
     expect(page).to have_content('Desenvolver código Java')
