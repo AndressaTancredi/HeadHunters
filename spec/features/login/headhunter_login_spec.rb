@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User log in' do
+feature 'Headhunter log in' do
   scenario 'successfuly' do
     Headhunteruser.create!(email: 'headhunter@test.com.br', password: '12345678')
 
@@ -11,7 +11,7 @@ feature 'User log in' do
     click_on 'Log in'
 
     expect(page).to have_content('Login efetuado com sucesso!')
-    #expect(page).to have_link('Cadastrar Vagas')
+    expect(page).to have_link('Cadastrar Nova Vaga')
     expect(page).to have_link('Vagas Cadastradas')
     expect(page).to have_link('Logout')
     expect(page).not_to have_link('Acesso HeadHunter')
@@ -30,7 +30,7 @@ feature 'User log in' do
     expect(page).to have_content('Saiu com sucesso')
     expect(page).not_to have_link('Logout')
     expect(page).to have_link('Acesso HeadHunter')
-    #expect(page).not_to have_link('Cadastrar Vagas')
+    expect(page).not_to have_link('Cadastrar Nova Vaga')
     expect(page).not_to have_link('Vagas Cadastradas')
 
   end
