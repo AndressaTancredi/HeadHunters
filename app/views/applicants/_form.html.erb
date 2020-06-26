@@ -1,0 +1,34 @@
+<% if @applicant.errors.full_messages.any? %>
+  <p> Não foi possível salvar, verifique os erros abaixo: </p>
+  <ul>
+    <% @applicant.errors.full_messages.each do |a|%>
+      <li><%= a %></li>
+    <%end%>
+  </ul>
+<% end %>
+
+<%= form_for(@applicant) do |a| %>
+
+    <%= a.label :name, 'Nome Completo' %>
+    <%= a.text_field(:name) %>
+
+    <%= a.label :social_name, 'Nome Social' %>
+    <%= a.text_field(:social_name) %>
+
+    <%= a.label :birthdate, 'Data de Nascimento' %>
+    <%= a.text_field(:birthdate) %>
+
+    <%= a.label :education, 'Formação' %>
+    <%= a.text_field(:education) %>
+
+    <%= a.label :description, 'Descrição' %>
+    <%= a.text_field(:description) %>
+
+    <%= a.label :location, 'Localização'%>
+    <%= a.text_field(:location) %>
+
+    <%#= a.label :image, 'Foto de perfil' %>
+    <%#= a.text_field(:image) %>
+
+    <%= a.submit('Enviar') %>
+<% end %>
