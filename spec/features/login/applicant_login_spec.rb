@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Applicant log in' do
   scenario 'successfuly' do
-    Applicantuser.create!(email: 'applicant@test.com.br', password: '12345678')
+    create(:applicantuser, email:'applicant@test.com.br')
 
     visit root_path
     click_on 'Acesso Candidato'
@@ -16,7 +16,7 @@ feature 'Applicant log in' do
   end
 
   scenario 'and logout' do
-    Applicantuser.create!(email: 'applicant@test.com.br', password: '12345678')
+    create(:applicantuser, email:'applicant@test.com.br')
 
     visit root_path
     click_on 'Acesso Candidato'

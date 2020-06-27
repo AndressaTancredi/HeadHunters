@@ -3,17 +3,11 @@ require 'rails_helper'
 feature 'Admin registers job' do
   scenario 'successfuly' do
     # Teste para create não se cria antes algo no BD. Pq pode ter um falso positivo lendo o que já tem no BD.
+    headhunteruser = create(:headhunteruser, email: 'headhunter@test.com.br')
+    login_as(headhunteruser, scope: :headhunteruser)
 
-    Headhunteruser.create!(email: 'headhunter@test.com.br', password: '12345678')
-    visit root_path
-    click_on 'Acesso HeadHunter'
-    fill_in 'Email', with: 'headhunter@test.com.br'
-    fill_in 'Senha', with: '12345678'
-    click_on 'Log in'
-    
     visit root_path
     click_on 'Cadastrar Nova Vaga'
-
     fill_in 'Título', with: 'Desenvolvedor Java'
     fill_in 'Descrição', with: 'Desenvolver código Java'
     fill_in 'Nível', with: 'Senior'
@@ -33,18 +27,12 @@ feature 'Admin registers job' do
   end
 
   scenario 'and title cannot be blanck' do
-    Headhunteruser.create!(email: 'headhunter@test.com.br', password: '12345678')
-    visit root_path
-    click_on 'Acesso HeadHunter'
-    fill_in 'Email', with: 'headhunter@test.com.br'
-    fill_in 'Senha', with: '12345678'
-    click_on 'Log in'
+    headhunteruser = create(:headhunteruser, email: 'headhunter@test.com.br')
+    login_as(headhunteruser, scope: :headhunteruser)
 
     visit root_path
     click_on 'Cadastrar Nova Vaga'
-
     fill_in 'Título', with: ''
-
     click_on 'Cadastrar'
 
     expect(Job.count).to eq 0

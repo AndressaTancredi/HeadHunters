@@ -2,17 +2,12 @@ require 'rails_helper'
 
 feature 'Admin views job' do
   scenario 'must be signed in' do
-    j = Job.create!(title: 'SRE', description: 'Profissional com mais de 5 anos de experiência',skills: 'Linux e Docker', salary: 10000, application_deadline: '15/08/2021', location: 'São Paulo', level: 'Pleno')
+    job1 = create(:job, title: 'SRE')
+    job2 = create(:job, title: 'Dev Ruby')
+    headhunteruser = create(:headhunteruser, email: 'headhunter@test.com.br')
+    login_as(headhunteruser, scope: :headhunteruser)
 
-    j2 = Job.create!(title: 'Dev Ruby')
-
-    Headhunteruser.create!(email: 'headhunter@test.com.br', password: '12345678')
     visit root_path
-    click_on 'Acesso HeadHunter'
-    fill_in 'Email', with: 'headhunter@test.com.br'
-    fill_in 'Senha', with: '12345678'
-    click_on 'Log in'
-
     click_on 'Vagas Cadastradas'
     click_on 'SRE'
     click_on 'Editar'
@@ -21,13 +16,13 @@ feature 'Admin views job' do
     fill_in 'Localização', with: 'Santos'
     click_on 'Enviar'
 
-    expect(current_path).to eq job_path(j.id)
+    expect(current_path).to eq job_path(job1.id)
     expect(page).to have_content('Devops')
     expect(page).to have_content('Profissional com mais de 5 anos de experiência')
     expect(page).to have_content('Linux e Docker')
     expect(page).to have_content('R$ 12.000,00')
     expect(page).to have_content('15/08/2021')
     expect(page).to have_content('Santos')
-    expect(page).not_to have_content(j2)
+    expect(page).not_to have_content(job2)
   end
 end

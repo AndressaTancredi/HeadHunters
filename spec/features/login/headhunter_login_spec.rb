@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Headhunter log in' do
   scenario 'successfuly' do
-    Headhunteruser.create!(email: 'headhunter@test.com.br', password: '12345678')
+    create(:headhunteruser, email: 'headhunter@test.com.br')
 
     visit root_path
     click_on 'Acesso HeadHunter'
@@ -18,7 +18,7 @@ feature 'Headhunter log in' do
   end
 
   scenario 'and logout' do
-    Headhunteruser.create!(email: 'headhunter@test.com.br', password: '12345678')
+    create(:headhunteruser, email: 'headhunter@test.com.br')
 
     visit root_path
     click_on 'Acesso HeadHunter'
@@ -32,6 +32,5 @@ feature 'Headhunter log in' do
     expect(page).to have_link('Acesso HeadHunter')
     expect(page).not_to have_link('Cadastrar Nova Vaga')
     expect(page).not_to have_link('Vagas Cadastradas')
-
   end
 end

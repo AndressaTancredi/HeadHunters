@@ -2,13 +2,9 @@ require 'rails_helper'
 
 feature 'Applicant profile' do
   scenario 'sees the profile page' do
-    Applicantuser.create!(email: 'applicant@test.com.br', password: '12345678')
-    visit root_path
-    click_on 'Acesso Candidato'
-    fill_in 'Email', with: 'applicant@test.com.br'
-    fill_in 'Senha', with: '12345678'
-    click_on 'Log in'
-    
+    applicantuser = create(:applicantuser, email:'applicant@test.com.br')
+    login_as(applicantuser, scope: :applicantuser)
+
     visit root_path
     click_on 'Meu Perfil'
 
@@ -18,19 +14,13 @@ feature 'Applicant profile' do
   end
 
   scenario 'creates profile' do
-    Applicant.create!(name: 'Marie Skłodowska Curie', social_name: 'Marie Curie', birthdate:'07/11/1867', education: 'Dourora em Ciências', description:  'Pesquisas pioneiras no ramo da radiotividade', location: 'Polônia', image: '')
-
-    Applicantuser.create!(email: 'applicant@test.com.br', password: '12345678')
-    visit root_path
-    click_on 'Acesso Candidato'
-    fill_in 'Email', with: 'applicant@test.com.br'
-    fill_in 'Senha', with: '12345678'
-    click_on 'Log in'
+    create(:applicant, name: 'Marie Skłodowska Curie', social_name: 'Marie Curie')
+    applicantuser = create(:applicantuser, email:'applicant@test.com.br')
+    login_as(applicantuser, scope: :applicantuser)
     
     visit root_path
     click_on 'Meu Perfil'
     click_on 'Gerenciar Perfil'
-
     fill_in 'Nome Completo', with: 'Marie Skłodowska Curie'
     fill_in 'Nome Social', with: 'Marie Curie'
     fill_in 'Data de Nascimento', with: '07/11/1867'
@@ -39,7 +29,6 @@ feature 'Applicant profile' do
     fill_in 'Localização', with: 'Polônia'
     #page.attach_file("Foto de Perfil", Rails.root + 'app/assets/images/mc.jpeg') 
     #attach_file 'Foto de perfil', Rails.root.join('app/assets/images/mc.jpeg')
-
     click_on 'Enviar'
 
     expect(page).to have_content('Marie Skłodowska Curie')
@@ -49,4 +38,4 @@ feature 'Applicant profile' do
     expect(page).to have_content('Polônia')
     #expect(page).to have_content('')
   end
-end  
+end
