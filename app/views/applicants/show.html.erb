@@ -6,6 +6,6 @@
 <%= I18n.l @applicant.birthdate, format: :custom %>
 <%= @applicant.location %>
 
-<%#= link_to 'Editar', edit_applicant_path(@applicant.id) %>
+<%= link_to 'Editar', edit_applicant_path(@applicant.id) %>
 <%#= link_to 'Apagar', applicant_path(@applicant.id), method: :delete %>
 <%= link_to 'Voltar', applicants_path %>

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'Admin views job' do
-  scenario 'must be signed in' do
+feature 'Admin edits job' do
+  scenario 'successfuly' do
     job1 = create(:job, title: 'SRE')
     job2 = create(:job, title: 'Dev Ruby')
     headhunteruser = create(:headhunteruser, email: 'headhunter@test.com.br')

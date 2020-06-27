@@ -2,7 +2,11 @@
 
 <% if @applicants.empty? %>
   <p> Perfil não cadastrado </p>
+  <%= link_to 'Cadastrar Perfil', new_applicant_path %>
+<% else %>
+  <% @applicants.each do |a| %>
+    <%= link_to a.social_name, a %>
+  <% end %>
 <% end %>
-<%#= image_tag(@user.image_url(:thumb).to_s) %>
 
-<%= link_to 'Gerenciar Perfil', new_applicant_path %>
+<%#= image_tag(@user.image_url(:thumb).to_s) %>
