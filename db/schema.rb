@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_191037) do
+ActiveRecord::Schema.define(version: 2020_06_30_203408) do
 
   create_table "applicants", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_06_26_191037) do
     t.string "description"
     t.string "location"
     t.string "image"
+    t.integer "applicantuser_id", null: false
+    t.index ["applicantuser_id"], name: "index_applicants_on_applicantuser_id"
   end
 
   create_table "applicantusers", force: :cascade do |t|
@@ -60,4 +62,5 @@ ActiveRecord::Schema.define(version: 2020_06_26_191037) do
     t.string "level"
   end
 
+  add_foreign_key "applicants", "applicantusers"
 end
