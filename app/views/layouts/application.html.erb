@@ -18,10 +18,15 @@
         <%= link_to 'Acesso HeadHunter', new_headhunteruser_session_path %>
       <% end %>
 
-      <% if applicantuser_signed_in? %>  
-        <%= link_to 'Meu Perfil', applicants_path %>
-        <%#= link_to 'Cadastrar Nova Vaga', new_job_path %>
+      <% if applicantuser_signed_in? %>
+        <% if applicantuser_signed_in? & current_applicantuser&.applicant.present? %>  
+          <%= link_to 'Meu Perfil', applicants_path %>
+          <%#= link_to 'Ver Vagas', new_job_path %>
+          <%= link_to 'Logout', destroy_applicantuser_session_path, method: :delete %>
+        <% else %>
+        <%= link_to 'Cadastrar Perfil', new_applicant_path %>
         <%= link_to 'Logout', destroy_applicantuser_session_path, method: :delete %>
+        <% end %>
       <% else %>
         <%= link_to 'Acesso Candidato', new_applicantuser_session_path %>
       <% end %>

@@ -14,7 +14,7 @@ class ApplicantsController < ApplicationController
   end
 
   def create
-    @applicant = Applicant.new(applicant_params)
+    @applicant = current_applicantuser.build_applicant(applicant_params)
 
     if @applicant.save
       redirect_to @applicant

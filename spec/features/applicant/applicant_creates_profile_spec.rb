@@ -1,24 +1,11 @@
 require 'rails_helper'
 
 feature 'Applicant profile' do
-  scenario 'sees the profile page' do
-    applicantuser = create(:applicantuser, email:'applicant@test.com.br')
-    login_as(applicantuser, scope: :applicantuser)
-
-    visit root_path
-    click_on 'Meu Perfil'
-
-    expect(page).to have_content('Perfil do Candidato')
-    expect(page).to have_content('Perfil não cadastrado')
-    expect(page).to have_link('Gerenciar Perfil')
-  end
-
   scenario 'creates profile' do
     applicantuser = create(:applicantuser, email:'applicant@test.com.br')
     login_as(applicantuser, scope: :applicantuser)
-    
+
     visit root_path
-    click_on 'Meu Perfil'
     click_on 'Cadastrar Perfil'
     fill_in 'Nome Completo', with: 'Marie Skłodowska Curie'
     fill_in 'Nome Social', with: 'Marie Curie'

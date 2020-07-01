@@ -14,9 +14,9 @@ feature 'Applicant profile' do
   end
 
   scenario 'successfully' do
-    create(:applicant, name: 'Marie Skłodowska Curie', social_name: 'Marie Curie')
     applicantuser = create(:applicantuser, email:'applicant@test.com.br')
     login_as(applicantuser, scope: :applicantuser)
+    create(:applicant, name: 'Marie Skłodowska Curie', social_name: 'Marie Curie', applicantuser: applicantuser)
     
     visit root_path
     click_on 'Meu Perfil'
