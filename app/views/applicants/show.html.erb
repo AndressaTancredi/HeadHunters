@@ -1,5 +1,6 @@
 <h1><%= "#{@applicant.social_name} Perfil"%></h1> 
 
+<%= image_tag @applicant.avatar %>
 <%= @applicant.name %>
 <%= @applicant.education %>
 <%= @applicant.description %>
@@ -7,5 +8,4 @@
 <%= @applicant.location %>
 
 <%= link_to 'Editar', edit_applicant_path(@applicant.id) %>
-<%#= link_to 'Apagar', applicant_path(@applicant.id), method: :delete %>
 <%= link_to 'Voltar', applicants_path %>

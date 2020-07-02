@@ -27,8 +27,8 @@
     <%= a.label :location, 'Localização'%>
     <%= a.text_field(:location) %>
 
-    <%#= a.label :image, 'Foto de perfil' %>
-    <%#= a.text_field(:image) %>
+    <%= a.label :avatar, 'Foto de perfil' %>
+    <%= a.file_field(:avatar) %>
 
     <%= a.submit('Enviar') %>
 <% end %>

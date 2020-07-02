@@ -13,7 +13,7 @@ feature 'Applicant profile' do
     fill_in 'Formação', with: 'Doutora em Ciências'
     fill_in 'Descrição', with: 'Pesquisas pioneiras no ramo da radioatividade.'
     fill_in 'Localização', with: 'Polônia'
-    #attach_file 'Foto de perfil', Rails.root.join('/spec/fixtures/mc.jpeg')
+    attach_file 'Foto de perfil', Rails.root.join('spec/fixtures/mulher.jpeg')
     click_on 'Enviar'
 
     expect(page).to have_content('Marie Skłodowska Curie')
@@ -21,6 +21,6 @@ feature 'Applicant profile' do
     expect(page).to have_content('Doutora em Ciências')
     expect(page).to have_content('Pesquisas pioneiras no ramo da radioatividade')
     expect(page).to have_content('Polônia')
-    #expect(page).to have_css('img[src*="mc.jpeg"]')carrierWave ou activeStorage
+    expect(page).to have_css('img[src*="mulher.jpeg"]')
   end
 end

@@ -22,7 +22,7 @@ feature 'Applicant edits profile' do
     expect(page).to have_content('Doutora em Ciências')
     expect(page).to have_content('Pesquisas pioneiras no ramo da radiotividade' )
     expect(page).to have_content('Polônia')
-    #expect(page).to have_content('')
+    expect(page).to have_css('img[src*="mulher.jpeg"]')
     expect(page).not_to have_content(ap2)
   end
 end

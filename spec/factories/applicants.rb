@@ -1,3 +1,5 @@
+include ActionDispatch::TestProcess
+
 FactoryBot.define do
   factory :applicant do
     sequence(:name) { |n| "#{n}" }
@@ -6,6 +8,5 @@ FactoryBot.define do
     education { 'Doutora em Ciências' }
     description { 'Pesquisas pioneiras no ramo da radiotividade' }
     location { 'Polônia' }
-    image { '' }
-  end
+    avatar { fixture_file_upload(Rails.root.join('spec', 'fixtures', 'mulher.jpeg'), 'image/jpeg') }  end
 end
