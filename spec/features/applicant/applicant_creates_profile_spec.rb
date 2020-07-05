@@ -13,7 +13,7 @@ feature 'Applicant profile' do
     fill_in 'Formação', with: 'Doutora em Ciências'
     fill_in 'Descrição', with: 'Pesquisas pioneiras no ramo da radioatividade.'
     fill_in 'Localização', with: 'Polônia'
-    attach_file 'Foto de perfil', Rails.root.join('spec/fixtures/mulher.jpeg')
+    attach_file 'Foto de Perfil', Rails.root.join('spec/fixtures/mulher.jpeg')
     click_on 'Enviar'
 
     expect(page).to have_content('Marie Skłodowska Curie')
@@ -22,5 +22,22 @@ feature 'Applicant profile' do
     expect(page).to have_content('Pesquisas pioneiras no ramo da radioatividade')
     expect(page).to have_content('Polônia')
     expect(page).to have_css('img[src*="mulher.jpeg"]')
+  end
+
+  scenario 'and must fill all fields' do
+    applicantuser = create(:applicantuser, email:'applicant@test.com.br')
+    login_as(applicantuser, scope: :applicantuser)
+    
+    visit root_path
+    click_on 'Cadastrar Perfil'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Nome não pode ficar em branco')
+    expect(page).to have_content('Nome Social não pode ficar em branco')
+    expect(page).to have_content('Data de Nascimento não pode ficar em branco')
+    expect(page).to have_content('Formação não pode ficar em branco')
+    expect(page).to have_content('Descrição não pode ficar em branco')
+    expect(page).to have_content('Localização não pode ficar em branco')
+    expect(page).to have_content('Foto de Perfil não pode ficar em branco')
   end
 end

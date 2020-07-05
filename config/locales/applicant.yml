@@ -1,0 +1,14 @@
+pt-BR:
+   activerecord:
+    models:
+      applicant:
+        one: Perfil
+    attributes:
+      applicant:
+        name: Nome
+        social_name: Nome Social
+        birthdate: Data de Nascimento
+        education: Formação
+        description: Descrição
+        location: Localização
+        avatar: Foto de Perfil
