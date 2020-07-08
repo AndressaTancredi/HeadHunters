@@ -19,8 +19,8 @@ feature 'Applicant profile' do
     create(:applicant, name: 'Marie Skłodowska Curie', social_name: 'Marie Curie', applicantuser: applicantuser)
     
     visit root_path
+    click_on 'Área do Candidato'
     click_on 'Meu Perfil'
-    click_on 'Marie Curie'
     
     expect(page).to have_content('Marie Curie Perfil')
     expect(page).to have_content('Marie Skłodowska Curie')

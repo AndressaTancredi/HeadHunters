@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :jobs
 
   resources :applicants
+
+  get '/meu-perfil', to: 'applicants#profile'
 end

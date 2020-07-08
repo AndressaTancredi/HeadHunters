@@ -8,8 +8,8 @@ feature 'Applicant edits profile' do
     ap2 = create(:applicant, name: 'Antônia', social_name: 'Toninha', applicantuser: applicantuser)
     
     visit root_path
+    click_on 'Área do Candidato'
     click_on 'Meu Perfil'
-    click_on 'Marie Curie'
     click_on 'Editar'
     fill_in 'Nome Completo', with: 'Alessandra Souza'
     fill_in 'Nome Social', with: 'Alessandra'

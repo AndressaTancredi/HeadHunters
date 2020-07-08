@@ -4,6 +4,10 @@ class ApplicantsController < ApplicationController
   def index
     @applicants = Applicant.all
   end
+  
+  def profile
+    @profile = current_applicantuser
+  end
 
   def show    
     @applicant = Applicant.find(params[:id])

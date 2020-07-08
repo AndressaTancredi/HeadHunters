@@ -20,7 +20,7 @@
 
       <% if applicantuser_signed_in? %>
         <% if applicantuser_signed_in? & current_applicantuser&.applicant.present? %>  
-          <%= link_to 'Meu Perfil', applicants_path %>
+          <%= link_to 'Área do Candidato', applicants_path %>
           <%#= link_to 'Ver Vagas', new_job_path %>
           <%= link_to 'Logout', destroy_applicantuser_session_path, method: :delete %>
         <% else %>
