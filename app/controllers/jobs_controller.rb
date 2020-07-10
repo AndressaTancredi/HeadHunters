@@ -13,7 +13,7 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(job_params)
+    @job = current_headhunteruser.job.build(job_params)
 
     if @job.save
       redirect_to @job
@@ -46,5 +46,5 @@ class JobsController < ApplicationController
 
   def set_job
     @job = Job.find(params[:id])
-  end  
+  end
 end

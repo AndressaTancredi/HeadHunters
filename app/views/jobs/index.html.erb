@@ -1,4 +1,4 @@
-<h1>Vagas Cadastradas</h1> 
+<h1>Vagas</h1> 
 
 <% @jobs.each do |job| %>
   <%= link_to job.title, job %>
@@ -6,6 +6,7 @@
 
 <% if @jobs.empty? %>
   <p> Nenhuma vaga cadastrada </p>
+    <% if current_headhunteruser.present? %>
+      <%= link_to 'Cadastrar nova vaga', new_job_path%>  
+    <% end %>
 <% end %>
-
-<%= link_to 'Cadastrar nova vaga', new_job_path%>

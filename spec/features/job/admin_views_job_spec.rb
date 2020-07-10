@@ -14,9 +14,9 @@ feature 'Admin views job' do
   end
 
   scenario 'successfully' do
-    create(:job, title: 'SRE')
     headhunteruser = create(:headhunteruser, email: 'headhunter@test.com.br')
     login_as(headhunteruser, scope: :headhunteruser)
+    create(:job, title: 'SRE', headhunteruser: headhunteruser)
 
     visit root_path
     click_on 'Vagas Cadastradas'
@@ -25,9 +25,10 @@ feature 'Admin views job' do
   end
 
   scenario 'and views details' do
-    create(:job, title: 'SRE')
     headhunteruser = create(:headhunteruser, email: 'headhunter@test.com.br')
     login_as(headhunteruser, scope: :headhunteruser)
+    create(:job, title: 'SRE', headhunteruser: headhunteruser)
+
   
     visit root_path
     click_on 'Vagas Cadastradas'
@@ -38,7 +39,6 @@ feature 'Admin views job' do
     expect(page).to have_content('Linux e Docker')
     expect(page).to have_content('R$ 10.000,00')
     expect(page).to have_content('15/08/2021')
-    expect(page).to have_content('São Paulo')
     expect(page).to have_content('São Paulo')
     expect(page).to have_content('Pleno')
     expect(page).to have_link('Voltar')

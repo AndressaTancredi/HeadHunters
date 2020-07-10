@@ -2,10 +2,10 @@ require 'rails_helper'
 
 feature 'Admin edits job' do
   scenario 'successfuly' do
-    job1 = create(:job, title: 'SRE')
-    job2 = create(:job, title: 'Dev Ruby')
     headhunteruser = create(:headhunteruser, email: 'headhunter@test.com.br')
     login_as(headhunteruser, scope: :headhunteruser)
+    job1 = create(:job, title: 'SRE', headhunteruser: headhunteruser)
+    job2 = create(:job, title: 'Dev Ruby', headhunteruser: headhunteruser)
 
     visit root_path
     click_on 'Vagas Cadastradas'

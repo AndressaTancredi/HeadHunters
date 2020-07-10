@@ -2,9 +2,9 @@ require 'rails_helper'
 
 feature 'Admin deletes job' do
   scenario 'successfully' do
-    create(:job, title: 'SRE')
     headhunteruser = create(:headhunteruser, email: 'headhunter@test.com.br')
     login_as(headhunteruser, scope: :headhunteruser)
+    create(:job, title: 'SRE', headhunteruser: headhunteruser)
 
     visit root_path
     click_on 'Vagas Cadastradas'
@@ -16,10 +16,10 @@ feature 'Admin deletes job' do
   end
 
   scenario 'and keep anothers' do
-    create(:job, title: 'SRE')
-    create(:job, title: 'Dev Ruby')
     headhunteruser = create(:headhunteruser, email: 'headhunter@test.com.br')
     login_as(headhunteruser, scope: :headhunteruser)
+    create(:job, title: 'SRE', headhunteruser: headhunteruser)
+    create(:job, title: 'Dev Ruby', headhunteruser: headhunteruser)
 
     visit root_path
     click_on 'Vagas Cadastradas'

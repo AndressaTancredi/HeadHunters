@@ -1,0 +1,13 @@
+<h1> Perfil do Candidato </h1> 
+
+<h1><%= "#{@profile.applicant.social_name} Perfil"%></h1> 
+
+<%= image_tag @profile.applicant.thumbnail %>
+<%= @profile.applicant.name %>
+<%= @profile.applicant.education %>
+<%= @profile.applicant.description %>
+<%= I18n.l @profile.applicant.birthdate, format: :custom %>
+<%= @profile.applicant.location %>
+
+<%= link_to 'Editar', edit_applicant_path(@profile.applicant.id) %>
+<%= link_to 'Voltar', meu_perfil_path %>
