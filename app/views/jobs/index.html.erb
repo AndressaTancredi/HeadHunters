@@ -1,4 +1,12 @@
-<h1>Vagas</h1> 
+<h1> Vagas </h1>
+
+<h2> Resultado da busca por: <%= @search_query %></h2>
+<p><%= @jobs.count %> vagas encontradas</p>
+<%= form_with url:search_jobs_path, local: true, method: :get do |f|%>
+  <%= f.label :query, 'Busca' %>
+  <%= f.search_field :query %>
+  <%= f.submit 'Buscar' %>
+<% end %>
 
 <% @jobs.each do |job| %>
   <%= link_to job.title, job %>

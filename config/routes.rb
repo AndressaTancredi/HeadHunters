@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :jobs
+  resources :jobs do
+    get 'search', on: :collection
+  end
 
   resources :applicants
 
