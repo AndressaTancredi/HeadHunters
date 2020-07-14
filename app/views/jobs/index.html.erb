@@ -1,7 +1,11 @@
 <h1> Vagas </h1>
 
 <h2> Resultado da busca por: <%= @search_query %></h2>
-<p><%= @jobs.count %> vagas encontradas</p>
+<% if @jobs.count == 0 %>
+  <%= t :job, count: 0%>
+<% else %>  
+  <p><%= @jobs.count %> Vagas Encontradas</p>
+<% end %>  
 <%= form_with url:search_jobs_path, local: true, method: :get do |f|%>
   <%= f.label :query, 'Busca' %>
   <%= f.search_field :query %>

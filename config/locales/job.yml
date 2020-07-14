@@ -1,0 +1,16 @@
+pt-BR:
+   activerecord:
+    models:
+      job:
+        zero: Nenhuma Vaga Encontrada
+        one: Vaga
+        other: Vagas
+    attributes:
+      job:
+        title: Título
+        description: Descrição
+        skills: Habilidades
+        salary: Salário
+        application_deadline: Data Final Para Aplicação
+        location: Localização
+        level: Nível

@@ -37,7 +37,7 @@ feature 'Applicant searchs job' do
 
     expect(current_path).to eq search_jobs_path
     expect(page).to have_content 'Resultado da busca por: Desenvolvedora'
-    expect(page).to have_content '2 vagas encontradas'
+    expect(page).to have_content '2 Vagas Encontradas'
     expect(page).to have_content 'Desenvolvedora Ruby'
     expect(page).to have_content 'Desenvolvedora FrontEnd'
     expect(page).not_to have_content 'QA'
@@ -56,6 +56,6 @@ feature 'Applicant searchs job' do
 
     expect(current_path).to eq search_jobs_path
     expect(page).to have_content 'Resultado da busca por: Desenvolvedora'
-    expect(page).to have_content '0 vagas encontradas'
+    expect(page).to have_content 'Nenhuma vaga cadastrada'
   end  
 end
