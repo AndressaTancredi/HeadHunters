@@ -43,6 +43,25 @@ feature 'Applicant searchs job' do
     expect(page).not_to have_content 'QA'
   end
 
+  scenario 'from description' do
+    applicantuser = create(:applicantuser, email:'applicant@test.com.br')
+    login_as(applicantuser, scope: :applicantuser)
+    create(:applicant, name: 'Marie Skłodowska Curie', social_name: 'Marie Curie', applicantuser: applicantuser)
+    headhunteruser = create(:headhunteruser, email: 'headhunter@test.com.br')
+    create(:job, title: 'SRE', description: 'ansible', headhunteruser: headhunteruser)
+    create(:job, title: 'Devops', description: 'terraform', headhunteruser: headhunteruser)
+
+    visit root_path
+    click_on 'Área do Candidato'
+    click_on 'Ver Vagas'
+    fill_in 'Busca', with: 'ansible'
+    click_on 'Buscar'
+
+    expect(current_path).to eq search_jobs_path
+    expect(page).to have_content 'SRE'
+    expect(page).not_to have_content 'Devops'
+  end
+
   scenario 'there are not results' do
     applicantuser = create(:applicantuser, email:'applicant@test.com.br')
     login_as(applicantuser, scope: :applicantuser)

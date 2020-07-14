@@ -39,8 +39,9 @@ class JobsController < ApplicationController
   end
 
   def search
-    @jobs = Job.where("title LIKE ?", "%#{params[:query]}%")
     @search_query = params[:query]
+    @jobs = Job.where("title LIKE ?", "%#{@search_query}%")
+               .or(Job.where("description LIKE ?", "%#{@search_query}%"))
     render :index
   end
 
